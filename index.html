@@ -8,11 +8,44 @@
     <title>Library</title>
 </head>
 <body>
-    <button id="add-book">Add Book</button>
+    <div id="book-info">
+        <label for="book-title">Book Title</label>
+        <input type="text" id="book-title"></input>
+        <label for="book-title">Book Author</label>
+        <input type="text" id="book-author"></input>
+        <label for="book-title">Book Pages</label>
+        <input type="text" id="book-pages"></input>
+        <label for="book-title">Book Read</label>
+        <input type="checkbox" id="book-read"></input>
+        <label for="book-title">Book Image</label>
+        <input type="text" id="book-image"></input>
+        <button id="book-cancel">Cancel</button>
+        <button id="book-confirm">Create Book</button>
+    </div>
     <div id="library">
-        
+
     </div>
     
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-database.js"></script>
+
+    <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+        apiKey: "AIzaSyBDcOJg5hX0lHbOHzw7nzV1PRCf8UwyZFc",
+        authDomain: "books-649ef.firebaseapp.com",
+        databaseURL: "https://books-649ef-default-rtdb.firebaseio.com",
+        projectId: "books-649ef",
+        storageBucket: "books-649ef.appspot.com",
+        messagingSenderId: "463339353036",
+        appId: "1:463339353036:web:f6cc1d54e5eb5b2848a369",
+        measurementId: "G-R45QHX46Q1"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    </script>
     <script src="./script.js"></script>
 </body>
 </html>
