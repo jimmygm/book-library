@@ -128,6 +128,7 @@ function addReadToggle(book, parent) {
     if (book.read == 'Read') toggleInput.checked = true;
     toggleInput.addEventListener('click', (e) => {
         book.toggleRead();
+        saveToCloud();
         updateLibrary();
     });
 
