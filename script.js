@@ -45,25 +45,17 @@ function addBookToLibrary() {
 }
 
 function updateLibrary() {
+    // Remove all the current books
     while (library.firstChild) {
         library.removeChild(library.firstChild);
     }
-
+    // Create a Card for every book
     myLibrary.forEach((book, index) => {
         let newDiv = createCard(book, index);
         library.appendChild(newDiv);
     });
-
     addBookButton();
     resetBookInfo();
-}
-
-function addBookButton() {
-    let newButton = document.createElement('button');
-    newButton.textContent = '+';
-    newButton.setAttribute('id', 'add-book');
-    newButton.onclick = showBookInfoWindow;
-    library.appendChild(newButton);
 }
 
 function createCard(book, idx) {
@@ -71,7 +63,6 @@ function createCard(book, idx) {
     addRemoveButton(bookCard);
     addImage(book, bookCard);
     addSpans(book, bookCard);
-    addReadToggle(book, bookCard);
     return bookCard;
 }
 
@@ -90,21 +81,27 @@ function addImage(book, parent) {
 
 function addSpans(book, parent) {
     let spanTitle = document.createElement('span');
-    spanTitle.textContent = `Title: ${book.title}`;
+    spanTitle.classList.add('title');
+    spanTitle.textContent = book.title;
 
     let spanAuthor = document.createElement('span');
+    spanAuthor.classList.add('author');
     spanAuthor.textContent = `Author: ${book.author}`;
 
     let spanPages = document.createElement('span');
-    spanPages.textContent = book.pages;
+    spanPages.classList.add('pages');
+    spanPages.textContent = `Pages: ${book.pages}`;
 
     let spanRead = document.createElement('span');
+    spanRead.classList.add('read');
     spanRead.textContent = book.read;
 
     parent.appendChild(spanTitle);
     parent.appendChild(spanAuthor);
     parent.appendChild(spanPages);
     parent.appendChild(spanRead);
+
+    addReadToggle(book, spanRead);
 }
 
 function addRemoveButton(bookCard) {
@@ -116,10 +113,13 @@ function addRemoveButton(bookCard) {
 }
 
 function removeBookCard(e) {
-    let bookIndex = e.target.parentNode.getAttribute('data-index');
-    myLibrary.splice(bookIndex, 1);
-    saveToCloud();
-    updateLibrary();
+    let userInput = confirm('Are you sure you want to delete this book?');
+    if (userInput) {
+        let bookIndex = e.target.parentNode.getAttribute('data-index');
+        myLibrary.splice(bookIndex, 1);
+        saveToCloud();
+        updateLibrary();
+    }
 }
 
 function addReadToggle(book, parent) {
@@ -132,6 +132,16 @@ function addReadToggle(book, parent) {
     });
 
     parent.appendChild(toggleInput);
+    console.log();
+}
+
+// A button at the end of the library to add a new one
+function addBookButton() {
+    let newButton = document.createElement('button');
+    newButton.textContent = '+';
+    newButton.setAttribute('id', 'add-book');
+    newButton.onclick = showBookInfoWindow;
+    library.appendChild(newButton);
 }
 
 function showBookInfoWindow() {
