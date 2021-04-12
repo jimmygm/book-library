@@ -106,6 +106,9 @@ h1 {
 
 .book input[type='checkbox'] {
     transform: scale(1.2);
+    border: none;
+    outline: solid 1px var(--text);
+    cursor: pointer;
 }
 
 .remove-btn {
