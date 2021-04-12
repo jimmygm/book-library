@@ -1,2 +1,2 @@
 # book-library
-A book, comic, manga, etc... library made with only HTML, CSS and Vanilla JS. (+Firebase Database API)
+A library for books, comics, manga, etc... made with only HTML, CSS and Vanilla JavaScript. (+Firebase Database API)
