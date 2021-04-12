@@ -1,3 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+:root {
+    --background: #222;
+    --first: #282828;
+    --second: #3d3d3d;
+    --text: #dbdbdb;
+}
+
+body {
+    font-family: Roboto;
+    background-color: var(--background);
+}
+
+h1 {
+    text-align: center;
+    color: var(--text);
+}
+
 #library {
     display: grid;
     gap: 10px;
@@ -6,10 +25,19 @@
 }
 
 #add-book {
-    height: 260px;
+    background-color: var(--background);
+    min-height: 380px;
+    height: 100%;
     font-size: 6rem;
-    border: none;
-    border-radius: 10%;
+    color: var(--text);
+    border: solid 1px var(--text);
+    border-radius: 6px;
+    transition: 200ms;
+}
+
+#add-book:hover {
+    background-color: var(--text);
+    color: var(--background);
 }
 
 #add-book:focus {
@@ -18,29 +46,46 @@
 
 #book-info {
     position: fixed;
-    left: 45%;
-    transform: translateX(-50%);
-    top: 35%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
     display: none;
     gap: 10px;
     grid-template-columns: 1fr 1fr;
     align-items: center;
 
-    background-color: darkcyan;
+    background-color: var(--background);
+    color: var(--text);
+    border: solid 1px var(--text);
     padding: 1rem;
 }
 
+#book-info button {
+    border: none;
+    background-color: var(--text);
+    color: var(--background);
+}
+
 .book {
+    position: relative;
     display: grid;
     grid-template-columns: 1fr;
     align-items: center;
 
-    background-color: darkcyan;
-    color: black;
+    background-color: var(--first);
+    color: var(--text);
 
     height: 100%;
     padding: 5px;
+    border-radius: 6px;
+
+    transition: 200ms;
+}
+
+.book:hover {
+    background-color: var(--second);
+    transform: scale(1.05);
 }
 
 .book img {
@@ -49,12 +94,36 @@
 }
 
 .book span {
+    justify-self: center;
+
     max-width: 100%;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+
+    padding: 4px 0px;
+}
+
+.book input[type='checkbox'] {
+    transform: scale(1.2);
 }
 
 .remove-btn {
     position: absolute;
+    top: 0;
+    font-size: 1em;
+    background-color: var(--background);
+    color: var(--text);
+    border: none;
+    border-bottom: solid 4px var(--first);
+    border-right: solid 4px var(--first);
+    padding: 4px 12px;
+}
+
+.remove-btn:hover {
+    background-color: var(--second);
+}
+
+.remove-btn:focus {
+    outline: none;
 }
