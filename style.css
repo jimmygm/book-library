@@ -21,7 +21,8 @@ h1 {
     display: grid;
     gap: 10px;
     grid-template-columns: repeat(auto-fit, 200px);
-    place-items: center;
+    justify-content: center;
+    align-items: center;
 }
 
 #add-book {
