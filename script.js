@@ -16,18 +16,22 @@ function saveToCloud() {
     });
 }
 
-function Book(title, author, pages, read, image) {
-    const defaultImage =
+class Book {
+    defaultImage =
         'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.431PLxi6NCvli-k5zlQ5uwHaLG%26pid%3DApi&f=1';
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read ? 'Read' : 'Not read';
-    this.image = image == '' ? defaultImage : image;
+
+    constructor(title, author, pages, read, image) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read ? 'Read' : 'Not read';
+        this.image = image == '' ? this.defaultImage : image;
+    }
+
+    toggleRead() {
+        this.read = this.read == 'Read' ? 'Not read' : 'Read';
+    }
 }
-Book.prototype.toggleRead = function () {
-    this.read = this.read == 'Read' ? 'Not read' : 'Read';
-};
 
 function addBookToLibrary() {
     hideBookInfoWindow();
